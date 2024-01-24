@@ -1,0 +1,53 @@
+# Unity generated files
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+
+# Mono Auto Generated Files
+/[Aa]ssembly-[Cc]Sharp-*/ 
+/[Aa]ssembly-[Cc]Sharp-Editor-*/ 
+/[Ll]ibrary[Bb]uild/ 
+/[Bb]uilds/[Dd]ebug/
+/[Bb]uilds/[Rr]elease/
+/[Oo]bj/ 
+/[Oo]bj/[Dd]ebug/
+/[Oo]bj/[Rr]elease/
+/[Ll]ogs/ 
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.dll
+*.exe
+
+# Logs
+logs/
+*.log
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
