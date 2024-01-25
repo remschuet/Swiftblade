@@ -1,0 +1,13 @@
+MONSTERS
+https://elthen.itch.io/2d-pixel-art-gladiator-sprites
+https://elthen.itch.io/2d-pixel-art-pyromancer-sprites
+https://elthen.itch.io/2d-pixel-art-cyclops-sprites
+
+PLAYER
+https://clembod.itch.io/warrior-free-animation-set
+
+ENVIRONMENT
+https://assetstore.unity.com/packages/2d/environments/2d-pixel-art-platformer-biome-american-forest-255694#description
+
+OTHERS element:
+By me
