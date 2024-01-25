@@ -15,6 +15,8 @@ public class IACyclops : MonoBehaviour
     public float vitesseDeDeplacement = 5f;
     public float throwDistance = 12f;
     public float moveDistance = 5f;    
+    public GameObject rockPrefab;
+public float throwSpeed = 5f; // Ajustez la vitesse de lancer selon vos besoins
 
     private GameObject[] vosObjets;
     private bool enSaut = false;
@@ -56,11 +58,35 @@ public class IACyclops : MonoBehaviour
         }
     }
 
-    public void ThrowRock(){
+public void ThrowRock() {
+    GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+    if (player != null) {
+        // Créer une instance de la préfabriquée
+        GameObject rockInstance = Instantiate(rockPrefab, transform.position, Quaternion.identity);
+
+        // Calculer la direction vers le joueur
+        Vector3 direction = player.transform.position - transform.position;
+        direction.Normalize();
+
+        // Calculer l'angle de tir pour une trajectoire parabolique
+        float angle = Mathf.Atan2(direction.y, direction.x);
+        angle = angle * Mathf.Rad2Deg;
+
+        // Appliquer une force initiale pour suivre une trajectoire parabolique
+        rockInstance.GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * throwSpeed;
+
+        // Déclencher l'animation de lancer sur le Cyclope
         monster.GetComponent<Cyclops>().animationThrow();
+
+        // Appeler CancelThrowAnimation après 1 seconde
         Invoke("CancelThrowAnimation", 1f);
+
         Debug.Log("throw rock");
+    } else {
+        Debug.LogWarning("Player not found");
     }
+}
     private void CancelThrowAnimation()
     {
         monster.GetComponent<Cyclops>().animationThrowCancel();
