@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float slideSpeed = 24f;
     [SerializeField] private float dashAttackSpeed = 24f;
     private bool isFacingRight = true;
+    private bool isAttacking = false;
     private bool isDashing = false;
     private bool isDashingAttack = false;
     private bool isSliding = false;
@@ -119,6 +120,38 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    public void Attack(InputAction.CallbackContext context){
+        if (! gestionPv.GetIsAlive()){
+            return;
+        }        
+        if (context.performed) //&& IsGrounded()
+        {
+            StartCoroutine(AttackCoroutine());
+        }        
+    }
+
+    private IEnumerator AttackCoroutine()
+    {
+        isAttacking = true;
+        // animator.SetBool("isDashing", true); // Démarre l'animation de dash
+        animator.SetBool("isAttacking", true);
+
+        float AttackTime = 0.5f;
+        float startTime = Time.time;
+
+        GetComponent<Player>().Attack();
+       while (Time.time < startTime + AttackTime)
+        {
+            // rb.velocity = new Vector2((isFacingRight ? 1 : -1) * dashSpeed, rb.velocity.y);
+            yield return null;
+        }
+
+        animator.SetBool("isAttacking", false); // Arrête l'animation de dash
+        // gestionPv.canTakeDamage = true;
+        isAttacking = false;
+    }
+
     public void Dash(InputAction.CallbackContext context)
     {
         if (! gestionPv.GetIsAlive()){

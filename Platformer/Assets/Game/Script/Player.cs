@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
     Vector2 startPos;
     public List<string> tagsCibles = new List<string>(); // Utiliser une liste pour stocker plusieurs tags cibles
     public int damage = 1;
+    public int swordDamage = 10;
+    public GameObject swordObject;
+
     private GestionPv gestionPv;
     private Animator animator;
     private bool reviving = false;
@@ -40,6 +43,39 @@ public class Player : MonoBehaviour
             newSavePoint();
         }
     }
+
+public void Attack()
+{
+    swordObject.GetComponent<Sword>().Attack();
+    /*
+    if (swordObject != null)
+    {
+        // Utiliser OverlapBox pour détecter une collision partielle avec tous les objets à la fois
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(swordObject.transform.position, swordObject.GetComponent<BoxCollider2D>().size, 0f);
+
+        // Parcourir tous les colliders en collision
+        foreach (Collider2D hitCollider in hitColliders)
+        {
+            if (hitCollider.CompareTag("Entity"))
+            {
+                Debug.Log("damage sword");
+                // Vérifier si l'objet a un script de santé
+                GestionPv gestionPv = hitCollider.GetComponent<GestionPv>();
+                if (gestionPv != null)
+                {
+                    // Infliger des dégâts à l'objet
+                    gestionPv.TakeDamage(swordDamage);
+                }
+            }
+        }
+    }
+    else
+    {
+        Debug.LogWarning("Sword object not assigned!");
+    }
+    */
+}
+
 
     void Update() {
         if (! gestionPv.GetIsAlive() && ! reviving){

@@ -164,7 +164,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 71dfafe12388f3941b601a69efa047da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -375,35 +375,11 @@ MonoBehaviour:
     m_ActionId: 2e2bff13-fc7c-49f2-95d3-51357111865c
     m_ActionName: InGame/DashAttack[/Keyboard/ctrl]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 9cd7c7cf-e695-4139-8140-e5d917f7e419
     m_ActionName: InGame/Ladder[/Keyboard/w,/Keyboard/s]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 1fc043ee-ae68-4a82-90ea-c91936af81f7
     m_ActionName: InGame/LadderDown[/Keyboard/s]
   - m_PersistentCalls:
@@ -422,6 +398,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: cc7ef66f-a69f-43dc-8278-35dd57653e70
     m_ActionName: InGame/Ladder[/Keyboard/s,/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1095852012092441667}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 008ea6ba-6569-4315-92ca-ba8c62ac6615
+    m_ActionName: InGame/Attack[/Keyboard/k]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: InGame
@@ -467,6 +459,8 @@ MonoBehaviour:
   - Entity
   - Damage
   damage: 10
+  swordDamage: 10
+  swordObject: {fileID: 0}
 --- !u!114 &4380835183405918440
 MonoBehaviour:
   m_ObjectHideFlags: 0

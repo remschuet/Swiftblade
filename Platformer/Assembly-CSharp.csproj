@@ -82,6 +82,7 @@
     <Compile Include="Assets\Game\Script\PlayerMovement.cs" />
     <Compile Include="Assets\Game\Script\Menu\MainMenu.cs" />
     <Compile Include="Assets\Game\IA\Node.cs" />
+    <Compile Include="Assets\Game\Script\Sword.cs" />
     <Compile Include="Assets\Game\Script\Player.cs" />
   </ItemGroup>
   <ItemGroup>

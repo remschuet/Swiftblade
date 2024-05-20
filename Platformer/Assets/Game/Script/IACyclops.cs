@@ -58,35 +58,38 @@ public float throwSpeed = 5f; // Ajustez la vitesse de lancer selon vos besoins
         }
     }
 
-public void ThrowRock() {
-    GameObject player = GameObject.FindGameObjectWithTag("Player");
+    public void ThrowRock() {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-    if (player != null) {
-        // Créer une instance de la préfabriquée
-        GameObject rockInstance = Instantiate(rockPrefab, transform.position, Quaternion.identity);
+        if (player != null) {
+            // Créer une instance de la préfabriquée
+            GameObject rockInstance = Instantiate(rockPrefab, transform.position, Quaternion.identity);
 
-        // Calculer la direction vers le joueur
-        Vector3 direction = player.transform.position - transform.position;
-        direction.Normalize();
+            // Calculer la direction vers le joueur
+            Vector3 direction = player.transform.position - transform.position;
+            direction.y += 10f; // Ajouter 2 unités à la hauteur
 
-        // Calculer l'angle de tir pour une trajectoire parabolique
-        float angle = Mathf.Atan2(direction.y, direction.x);
-        angle = angle * Mathf.Rad2Deg;
+            // Normaliser la direction pour obtenir une direction unitaire
+            direction.Normalize();
 
-        // Appliquer une force initiale pour suivre une trajectoire parabolique
-        rockInstance.GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * throwSpeed;
+            // Calculer l'angle de tir (en radians)
+            float angle = Mathf.Atan2(direction.y, direction.x);
 
-        // Déclencher l'animation de lancer sur le Cyclope
-        monster.GetComponent<Cyclops>().animationThrow();
+            // Appliquer une force initiale pour un lancer droit avec une certaine force
+            rockInstance.GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * throwSpeed;
 
-        // Appeler CancelThrowAnimation après 1 seconde
-        Invoke("CancelThrowAnimation", 1f);
+            // Déclencher l'animation de lancer sur le Cyclope
+            monster.GetComponent<Cyclops>().animationThrow();
 
-        Debug.Log("throw rock");
-    } else {
-        Debug.LogWarning("Player not found");
+            // Appeler CancelThrowAnimation après 1 seconde
+            Invoke("CancelThrowAnimation", 1f);
+
+            Debug.Log("throw rock");
+        } else {
+            Debug.LogWarning("Player not found");
+        }
     }
-}
+
     private void CancelThrowAnimation()
     {
         monster.GetComponent<Cyclops>().animationThrowCancel();
@@ -173,3 +176,35 @@ public void ThrowRock() {
         return false;
     }
 }
+
+
+
+/*public void ThrowRock() {
+    GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+    if (player != null) {
+        // Créer une instance de la préfabriquée
+        GameObject rockInstance = Instantiate(rockPrefab, transform.position, Quaternion.identity);
+
+        // Calculer la direction vers le joueur
+        Vector3 direction = player.transform.position - transform.position;
+        direction.Normalize();
+
+        // Calculer l'angle de tir pour une trajectoire parabolique
+        float angle = Mathf.Atan2(direction.y, direction.x);
+        angle = angle * Mathf.Rad2Deg;
+
+        // Appliquer une force initiale pour suivre une trajectoire parabolique
+        rockInstance.GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * throwSpeed;
+
+        // Déclencher l'animation de lancer sur le Cyclope
+        monster.GetComponent<Cyclops>().animationThrow();
+
+        // Appeler CancelThrowAnimation après 1 seconde
+        Invoke("CancelThrowAnimation", 1f);
+
+        Debug.Log("throw rock");
+    } else {
+        Debug.LogWarning("Player not found");
+    }
+}*/
